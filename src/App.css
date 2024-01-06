@@ -853,6 +853,7 @@ form input {
 
     .name-and-id {
         font-size: 1.5rem;
+        padding: 12px;
     }
 
     .characteristics ul {
