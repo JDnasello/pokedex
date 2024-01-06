@@ -26,7 +26,7 @@ const SearchPokemon = () => {
                     <form onSubmit={searchSubmit}>
                         <input type="search" name='searchValue'
                             onChange={inputChange} value={searchValue}
-                            placeholder='Buscar pokemon' />
+                            placeholder='Search Pokemons' />
                         <button className='btn-search'>{<SearchIcon fontSize='small' style={{ color: '#fff' }} />}</button>
                     </form>
             </div>

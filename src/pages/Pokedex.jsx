@@ -30,7 +30,7 @@ const Pokedex = () => {
                     <button onClick={toggleFilterBar}
                         style={filterBarActive ? { backgroundColor: '#999'} : { backgroundColor: '#eee' }}>
                         <TuneIcon className="filter-icon" style={{ color: '#666' }} />
-                        <span>Filtrar</span>
+                        <span>Filter types</span>
                     </button>
                 </div>}
             {!loading && <div className="container-pokedex">

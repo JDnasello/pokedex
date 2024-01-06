@@ -9,7 +9,7 @@ const FilterPokemons = () => {
         <>
             
             <div className={`container-filter ${filterBarActive ? 'active' : ''}`}>
-                <h1>Tipo</h1>
+                <h1>Type</h1>
                 <div className="filter-pokemon-type">
                     <div className="pokemon-type">
                         <input type="checkbox" name="normal" id="normal"
