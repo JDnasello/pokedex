@@ -14,7 +14,7 @@ const ContextProvider = ({ children }) => {
     const initURL = 'https://pokeapi.co/api/v2/'
 
     //llamar a la pokeAPI y traer toda la data dentro del limite establecido
-    const getLimitedPokemons = async (limit = 100) => {
+    const getLimitedPokemons = async (limit = 12) => {
         setLoading(true)
         try {
             const response = await fetch(`${initURL}pokemon?limit=${limit}&offset=${offset}`)
@@ -79,7 +79,7 @@ const ContextProvider = ({ children }) => {
     })
 
     const loadMorePokemons = () => {
-        setOffset(offset + 100)
+        setOffset(offset + 12)
     }
 
     useEffect(() => {
@@ -157,21 +157,3 @@ const ContextProvider = ({ children }) => {
 }
 
 export default ContextProvider
-
-
-/*setTypeSelected({
-            ...typeSelected,
-            [e.target.name]: e.target.checked
-            
-        })
-        console.log([e.target.name])
-        if (e.target.checked) {
-            const results = allPokemons.filter(pokemon => 
-                pokemon.types.map(type => type.type.name).includes(e.target.name))
-            setFilteredTypePokemons([...filteredTypePokemons ,...results])
-        } else {
-            const results = filteredTypePokemons.filter(pokemon => 
-                !pokemon.types.map(type => type.type.name).includes(e.target.name))
-            
-            setFilteredTypePokemons([...results])
-        }*/
