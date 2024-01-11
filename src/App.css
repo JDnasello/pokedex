@@ -429,17 +429,27 @@ form input {
 
 .pokemon-type input {
     width: 15px;
+    visibility: hidden;
 }
 
 .pokemon-type label {
     background-color: transparent;
+    cursor: pointer;
 }
 
 .pokemon-type .dragon {
     background-image: none;
 }
 
-.pokemon-type .normal:hover {
+.pokemon-type .normal:hover{
+    color: var(--normal);
+}
+
+input:checked~.normal {
+    color: var(--normal);
+}
+
+.normal .color-text-active:focus {
     color: var(--normal);
 }
 
@@ -447,7 +457,15 @@ form input {
     color: var(--fire);
 }
 
+input:checked~.fire {
+    color: var(--fire);
+}
+
 .pokemon-type .water:hover {
+    color: var(--water);
+}
+
+input:checked~.water {
     color: var(--water);
 }
 
@@ -455,7 +473,15 @@ form input {
     color: var(--grass);
 }
 
+input:checked~.grass {
+    color: var(--grass);
+}
+
 .pokemon-type .electric:hover {
+    color: var(--electric);
+}
+
+input:checked~.electric {
     color: var(--electric);
 }
 
@@ -463,7 +489,15 @@ form input {
     color: var(--ice);
 }
 
+input:checked~.ice {
+    color: var(--ice);
+}
+
 .pokemon-type .fighting:hover {
+    color: var(--fighting);
+}
+
+input:checked~.fighting {
     color: var(--fighting);
 }
 
@@ -471,7 +505,15 @@ form input {
     color: var(--poison);
 }
 
+input:checked~.poison {
+    color: var(--poison);
+}
+
 .pokemon-type .ground:hover {
+    color: var(--ground);
+}
+
+input:checked~.ground {
     color: var(--ground);
 }
 
@@ -479,7 +521,15 @@ form input {
     color: var(--flying);
 }
 
+input:checked~.flying {
+    color: var(--flying);
+}
+
 .pokemon-type .psychic:hover {
+    color: var(--psychic);
+}
+
+input:checked~.psychic {
     color: var(--psychic);
 }
 
@@ -487,11 +537,23 @@ form input {
     color: var(--bug);
 }
 
+input:checked~.bug {
+    color: var(--bug);
+}
+
 .pokemon-type .rock:hover {
     color: var(--rock);
 }
 
+input:checked~.rock {
+    color: var(--rock);
+}
+
 .pokemon-type .ghost:hover {
+    color: var(--ghost);
+}
+
+input:checked~.ghost {
     color: var(--ghost);
 }
 
@@ -503,7 +565,15 @@ form input {
     color: #6F35FC;
 }
 
+input:checked~.dragon {
+    color: #6F35FC;
+}
+
 .pokemon-type .dark:hover {
+    color: var(--dark);
+}
+
+input:checked~.dark {
     color: var(--dark);
 }
 
@@ -511,7 +581,15 @@ form input {
     color: var(--steel);
 }
 
+input:checked~.steel {
+    color: var(--steel);
+}
+
 .pokemon-type .fairy:hover {
+    color: var(--fairy);
+}
+
+input:checked~.fairy {
     color: var(--fairy);
 }
 
