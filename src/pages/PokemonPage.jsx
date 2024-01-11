@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 const PokemonPage = () => {
 
-    const { searchById, loading } = useContext(PokemonContext)
+    const { searchById } = useContext(PokemonContext)
     const { id } = useParams()
     const [pokemon, setPokemon] = useState({})
     const getPokemon = async id => {
@@ -22,47 +22,38 @@ const PokemonPage = () => {
 
     return (
         <div className="container-pokemon" >
-            {
-                loading ? 
-                    <div className="loading-icon">
-                        <l-tailspin
-                            size="60"
-                            stroke="7"
-                            speed="1"
-                            color="rgb(51, 108, 240)"
-                        ></l-tailspin>
-                    </div>
-                    : <div className="pokemon-info">
-                        <Link to='/pokedex'><button className="back-to-pokedex">Back to Pokedex</button></Link>
-                        <div className="name-and-id">
-                            <h1 className="custom-font">{pokemon.name}</h1>
-                            <span className="custom-font">#{pokemon.id}</span>
-                        </div>
-                        <div className="pokemon-img-and-characteristics">
-                            <img src={pokemon?.sprites?.other["official-artwork"]?.front_default} alt={pokemon.name} />
-                            <div className="container-characteristics">
-                                <div className="characteristics">
-                                    <ul className="column-1">
-                                        <li>
-                                            <span className="characteristic-title">Height</span>
-                                            <span className="pokemon-characteristic-value">{pokemon.height}m</span>
-                                        </li>
-                                        <li>
-                                            <span className="characteristic-title">Weight</span>
-                                            <span className="pokemon-characteristic-value">{pokemon.weight}kg</span>
-                                        </li>
-                                    </ul>
-                                    <ul className="column-2">
-                                        <li>
-                                            <span className="characteristic-title">Type</span>
-                                                <div>
-                                                    {pokemon?.types?.map(pokemonType => (
-                                                        <span key={pokemonType.type.name}
-                                                            className={`${pokemonType.type.name} pokemon-characteristic-type`}>
-                                                            {pokemonType.type.name}
-                                                        </span>
-                                                    ))}
-                                                </div>
+            
+            <div className="pokemon-info">
+                <Link to='/pokedex'><button className="back-to-pokedex">Back to Pokedex</button></Link>
+                <div className="name-and-id">
+                    <h1 className="custom-font">{pokemon.name}</h1>
+                    <span className="custom-font">#{pokemon.id}</span>
+                </div>
+                    <div className="pokemon-img-and-characteristics">
+                        <img src={pokemon?.sprites?.other["official-artwork"]?.front_default} alt={pokemon.name} />
+                        <div className="container-characteristics">
+                            <div className="characteristics">
+                                <ul className="column-1">
+                                    <li>
+                                        <span className="characteristic-title">Height</span>
+                                        <span className="pokemon-characteristic-value">{pokemon.height}m</span>
+                                    </li>
+                                    <li>
+                                        <span className="characteristic-title">Weight</span>
+                                        <span className="pokemon-characteristic-value">{pokemon.weight}kg</span>
+                                    </li>
+                                </ul>
+                                <ul className="column-2">
+                                    <li>
+                                        <span className="characteristic-title">Type</span>
+                                        <div>
+                                            {pokemon?.types?.map(pokemonType => (
+                                                <span key={pokemonType.type.name}
+                                                    className={`${pokemonType.type.name} pokemon-characteristic-type`}>
+                                                    {pokemonType.type.name}
+                                                </span>
+                                            ))}
+                                        </div>
                                         </li>
                                         <li>
                                             <span className="characteristic-title">Ability</span>
@@ -81,16 +72,14 @@ const PokemonPage = () => {
                                 {pokemon?.stats?.map((pokemonStat, index) => {
                                     return (
                                     <div key={index}>
-                                        <span className="stat-name">{pokemonStat.stat.name}</span>
-                                            <div className="progress-bar" style={getProgressWidth(pokemonStat.base_stat)}></div>
-                                        <span className="stat-value">{pokemonStat.base_stat}</span>
+                                    <span className="stat-name">{pokemonStat.stat.name}</span>
+                                    <div className="progress-bar" style={getProgressWidth(pokemonStat.base_stat)}></div>
+                                    <span className="stat-value">{pokemonStat.base_stat}</span>
                                     </div>
                                 )
                             })}
-                        </div>
-                    </div>
-            }
-            
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,12 +1,13 @@
 import {Routes, Route } from 'react-router-dom'
-
 import Home from './pages/Home.jsx'
-import Pokedex from './pages/Pokedex.jsx'
 import './App.css'
 import SearchPokemon from './components/SearchPokemon.jsx'
 import ContextProvider from './context/ContextProvider.jsx'
-import PokemonPage from './pages/PokemonPage.jsx'
-import SearchPokemonsPage from './pages/SearchPokemonsPage.jsx'
+import { lazy } from 'react'
+
+const PokedexLazy = lazy(() => import('./pages/Pokedex.jsx'));
+const PokemonPageLazy = lazy(() => import('./pages/PokemonPage.jsx'));
+const SearchPokemonsPageLazy = lazy(() => import('./pages/SearchPokemonsPage.jsx'));
 
 function App() {
   
@@ -15,9 +16,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/pokedex' element={<SearchPokemon />} >
-          <Route path='/pokedex' element={<Pokedex />} />
-          <Route path='pokemon/:id' element={<PokemonPage />} />
-          <Route path='search/*' element={<SearchPokemonsPage />} />
+          <Route path='/pokedex' element={<PokedexLazy />} />
+          <Route path='pokemon/:id' element={<PokemonPageLazy />} />
+          <Route path='search/*' element={<SearchPokemonsPageLazy />} />
         </Route>
       </Routes>
     </ContextProvider>

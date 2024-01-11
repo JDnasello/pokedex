@@ -1,6 +1,6 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
-import { useContext } from 'react';
+import { Suspense, useContext } from 'react';
 import { PokemonContext } from '../context/Context';
 import { lowerCase } from '../functions/functions';
 
@@ -31,7 +31,17 @@ const SearchPokemon = () => {
                     </form>
             </div>
             </header>
-            <Outlet />
+            <Suspense fallback={
+                <div className='loading-icon'>
+                    <l-tailspin
+                        size="60"
+                        stroke="7"
+                        speed="1"
+                        color="rgb(51, 108, 240)"
+                    ></l-tailspin>
+                </div>}>
+                <Outlet />
+            </Suspense>
         </>
     )
 }

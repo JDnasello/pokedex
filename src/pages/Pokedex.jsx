@@ -8,7 +8,7 @@ import '../App.css'
 
 const Pokedex = () => {
     
-    const { loading, filterBarActive, setFilterBarActive, loadMorePokemons } = useContext(PokemonContext)
+    const { filterBarActive, setFilterBarActive, loadMorePokemons } = useContext(PokemonContext)
     
     const toggleFilterBar = () => {
         setFilterBarActive(!filterBarActive)
@@ -17,28 +17,19 @@ const Pokedex = () => {
     return (
         <>
 
-            {loading ?
-                <div className="loading-icon">
-                    <l-tailspin
-                        size="60"
-                        stroke="7"
-                        speed="1"
-                        color="rgb(51, 108, 240)"
-                    ></l-tailspin>
-                </div>
-                : <div className="filter">
+            
+            <div className="filter">
                     <button onClick={toggleFilterBar}
                         style={filterBarActive ? { backgroundColor: '#999'} : { backgroundColor: '#eee' }}>
                         <TuneIcon className="filter-icon" style={{ color: '#666' }} />
                         <span>Filter types</span>
                     </button>
-                </div>}
-            {!loading && <div className="container-pokedex">
+                </div>
+            <div className="container-pokedex">
                 <FilterPokemons />
                 <Pokemons />
                 <button className="btn-load-more-pokemons" onClick={loadMorePokemons}>Load more Pokemons</button>
-                    
-            </div>}
+            </div>
         </>
     )
 }

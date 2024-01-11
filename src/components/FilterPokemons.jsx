@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { PokemonContext } from "../context/Context"
 
 const FilterPokemons = () => {
@@ -14,7 +14,7 @@ const FilterPokemons = () => {
                     <div className="pokemon-type">
                         <input type="checkbox" name="normal" id="normal"
                             onChange={filterTypes} />
-                        <label htmlFor="normal" className="normal" >Normal</label>
+                        <label htmlFor="normal" className="normal">Normal</label>
                     </div>
                     <div className="pokemon-type">
                         <input type="checkbox" name="fire" id="fire" onChange={filterTypes} />
