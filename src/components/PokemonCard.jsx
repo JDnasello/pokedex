@@ -3,7 +3,6 @@ import { upperCase } from '../functions/functions.js'
 
 const PokemonCard = ({ pokemon }) => {
     
-
     return (
         <>
             <div className='pokemon-card'>
