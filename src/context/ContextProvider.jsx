@@ -67,7 +67,7 @@ const ContextProvider = ({ children }) => {
         try {
             const response = await fetch(`${initURL}pokemon/${id}`)
             const data = await response.json()
-            console.log(data);
+            return data
         }
         catch (err) {
             console.error(err)

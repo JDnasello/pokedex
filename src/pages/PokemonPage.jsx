@@ -20,7 +20,7 @@ const PokemonPage = () => {
 
     useEffect(() => {
         getPokemon(id)
-    }, [])
+    }, [id])
 
     const getProgressWidth = (baseStat) => {
         return {'--progress-bar-length': `${baseStat}%`}
