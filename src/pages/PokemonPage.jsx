@@ -1,14 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { PokemonContext } from "../context/Context"
 import { Link, useParams } from "react-router-dom"
-import { upperCase } from "../functions/functions"
 
 const PokemonPage = () => {
 
-    const { searchById, getEvolutions } = useContext(PokemonContext)
+    const { searchById } = useContext(PokemonContext)
     const { id } = useParams()
     const [pokemon, setPokemon] = useState({})
-    const [evolution, setEvolution] = useState([])
 
     const getPokemon = async id => {
         try {
@@ -20,15 +18,9 @@ const PokemonPage = () => {
         }
     }
 
-    const getEvo = async id => {
-        const data = await getEvolutions(id)
-        setEvolution(data)
-    }
-
     useEffect(() => {
         getPokemon(id)
-        getEvo(id)
-    }, [id])
+    }, [])
 
     const getProgressWidth = (baseStat) => {
         return {'--progress-bar-length': `${baseStat}%`}
@@ -44,17 +36,17 @@ const PokemonPage = () => {
                     <span className="custom-font">#{pokemon?.id}</span>
                 </div>
                 <div className="pokemon-img-and-characteristics">
-                    <img src={pokemon?.sprites?.other["official-artwork"]?.front_default} alt={pokemon.name} />
+                    <img src={pokemon?.sprites?.other["official-artwork"]?.front_default} alt={pokemon?.name} />
                     <div className="container-characteristics">
                         <div className="characteristics">
                             <ul className="column-1">
                                 <li>
                                     <span className="characteristic-title">Height</span>
-                                    <span className="pokemon-characteristic-value">{pokemon.height}m</span>
+                                    <span className="pokemon-characteristic-value">{pokemon?.height}m</span>
                                 </li>
                                 <li>
                                     <span className="characteristic-title">Weight</span>
-                                    <span className="pokemon-characteristic-value">{pokemon.weight}kg</span>
+                                    <span className="pokemon-characteristic-value">{pokemon?.weight}kg</span>
                                 </li>
                             </ul>
                             <ul className="column-2">
@@ -93,23 +85,6 @@ const PokemonPage = () => {
                         )
                     })}
                 </div>
-                {
-                evolution.length > 1 && (
-                <>
-                <h3>Evolutions:</h3>
-                <div className="evolutions">
-                    {evolution?.map((evo, index) => {
-                        console.log('EvolutionData:', evo);
-                        return (
-                            <div key={index}>
-                                <Link to={`/pokedex/pokemon/${parseInt(evo.id)}`}><img src={evo.image} alt={evo.name} /></Link>
-                                <span>{upperCase(evo.name)}</span>
-                            </div>
-                        )
-                    })}
-                </div>
-                </>
-                )}
             </div>
         </div>
     )

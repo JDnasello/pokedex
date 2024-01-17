@@ -66,52 +66,12 @@ const ContextProvider = ({ children }) => {
     const searchById = async id => {
         try {
             const response = await fetch(`${initURL}pokemon/${id}`)
-            const data = response.json()
-            return data
-        }
-        catch (err) {
-            console.error(err)
-        }
-    }
-
-    const getEvolutions = async id => {
-        try {
-            const response = await fetch(`${initURL}pokemon-species/${id}`)
             const data = await response.json()
-            const evolutionChainUrl = data?.evolution_chain?.url
-            const evoChainResponse = await fetch(evolutionChainUrl)
-            const chainData = await evoChainResponse.json()
-
-            const evolutions = extractEvolutions(chainData?.chain)
-            return evolutions
+            console.log(data);
         }
         catch (err) {
             console.error(err)
         }
-    }
-
-    const extractEvolutions = (chain) => {
-        const evolutions = []
-
-        const extract = (details) => {
-
-            const id = details?.species?.url.split('/').slice(-2, -1, [0])
-
-            const evolution = {
-                name: details?.species?.name,
-                id: id,
-                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
-            }
-            evolutions.push(evolution)
-
-            if (details?.evolves_to.length > 0) {
-                details?.evolves_to.forEach((evolvesTo) => {
-                    extract(evolvesTo)
-                })
-            }
-        }
-        extract(chain)
-        return evolutions
     }
 
     const { searchValue, inputChange, resetForm} = useForm({
@@ -190,7 +150,6 @@ const ContextProvider = ({ children }) => {
             typeSelected,
             filteredTypePokemons,
             loadMorePokemons,
-            getEvolutions
         }} >
             {children}
         </PokemonContext.Provider>
